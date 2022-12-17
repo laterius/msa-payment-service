@@ -18,7 +18,7 @@ type Account struct {
 func init() {
 
 	mx := &gormigrate.Migration{
-		ID:       "0001",
+		ID:       "0008",
 		Migrate:  mixture.CreateTableM(&Account{}),
 		Rollback: mixture.DropTableR(&Account{}),
 	}
