@@ -38,6 +38,7 @@ func main() {
 	//Handlers
 	server.POST("/makePayment", api.MakePaymentHandler(newService))
 	server.POST("/cancelPayment", api.CancelPaymentHandler(newService))
+	server.GET("/payment/:orderId", api.GetPaymentHandler(newService))
 	server.GET("/probe/live", transport.RespondOk())
 	server.GET("/probe/ready", transport.RespondOk())
 

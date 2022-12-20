@@ -26,6 +26,11 @@ func (s *Service) DeletePayment(orderId uuid.UUID) error {
 	return s.db.Delete(&Payment{}, orderId).Error
 }
 
+func (s *Service) Get(orderId uuid.UUID) (payment *Payment, err error) {
+	err = s.db.Model(payment).Where(orderId).First(&payment).Error
+	return
+}
+
 type Payment struct {
 	OrderId uuid.UUID `json:"orderId" gorm:"type:uuid; not null; unique"`
 	Amount  int       `json:"amount"`
